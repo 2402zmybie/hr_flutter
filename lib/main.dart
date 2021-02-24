@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:hr_flutter/utils/FadeInImageWithoutAuth.dart';
-import 'package:hr_flutter/utils/NetworkImageWithoutAuth.dart';
-import 'model/post.dart';
+import 'demo/listview_demo.dart';
+import 'demo/drawer_demo.dart';
+import 'demo/bottom_navigation_bar_demo.dart';
 
 void main() => runApp(App());
 
@@ -13,70 +14,59 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Home(),
       theme: ThemeData(
-        primarySwatch: Colors.yellow
-      ),
+        primarySwatch: Colors.yellow,
+        //设置按下的颜色
+        highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
+        //设置水波纹的颜色
+        splashColor: Colors.white70
+      )
     );
   }
 }
 
 class Home extends StatelessWidget {
-  Widget _listItemBuilder(BuildContext context,int index) {
-    return Container(
-      color: Colors.white,
-      margin: EdgeInsets.all(8.0),
-      child: Column(
-        children: <Widget>[
-          // Image.network(posts[index].imageUrl),
-          //支持https请求的图片显示方式
-          FadeInImageWithoutAuth.assetNetwork(placeholder: 'childhood-in-a-picture.jpg', image: posts[index].imageUrl),
-          SizedBox(height: 16.0),
-          Text(
-            posts[index].title,
-            style: Theme.of(context).textTheme.title,
-          ),
-          Text(
-            posts[index].author,
-            style: Theme.of(context).textTheme.subhead,
-          ),
-          SizedBox(
-            height: 16.0,
-          )
-        ],
-      ),
-    );
-  }
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("HR"),
-          //不设置appbar的阴影
-          elevation: 0.0,
-        ),
-        body: ListView.builder(
-            itemCount: posts.length,
-            itemBuilder: _listItemBuilder,
+    return DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.search),
+                tooltip: 'Search',
+                onPressed: () => debugPrint('Search button is pressed'),
+              )
+            ],
+            title: Text("HR"),
+            //不设置appbar的阴影
+            elevation: 0.0,
+            bottom: TabBar(
+              unselectedLabelColor: Colors.black38,
+              indicatorColor: Colors.black54,
+              indicatorSize: TabBarIndicatorSize.label,
+              indicatorWeight: 1.0,
+              tabs: <Widget>[
+                Tab(icon: Icon(Icons.local_florist)),
+                Tab(icon: Icon(Icons.change_history)),
+                Tab(icon: Icon(Icons.directions_bike))
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: <Widget>[
+              ListViewDemo(),
+              Icon(Icons.change_history, size: 128, color: Colors.black12),
+              Icon(Icons.directions_bike, size: 128, color: Colors.black12),
+            ],
+          ),
+          //左边抽屉视图
+          drawer: DrawerDemo(),
+          //底部导航栏
+          bottomNavigationBar: BottomNaviationBarDemo(),
         )
     );
   }
 }
-
-
-class Hello extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'hello',
-        textDirection: TextDirection.ltr,
-        style: TextStyle(
-            fontSize: 40.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.black
-        ),
-      ),
-    );
-  }
-}
-
