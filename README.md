@@ -18,3 +18,6 @@ Stack: 一摞小部件,最外层是底板,可以叠加到一起, 在里面可以
 AspectRatio: 设置宽高比
 ConstrainedBox: 对容器有一些限制, 比如最大宽度,最大高度
 
+PageView
+
+
