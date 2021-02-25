@@ -16,7 +16,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SliverDemo(),
+      home: Home(),
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         //设置按下的颜色
@@ -67,7 +67,7 @@ class Home extends StatelessWidget {
               BasicDemo(),
               // Icon(Icons.directions_bike, size: 128, color: Colors.black12),
               LayoutDemo(),
-              ViewDemo()
+              SliverDemo()
             ],
           ),
           //左边抽屉视图
