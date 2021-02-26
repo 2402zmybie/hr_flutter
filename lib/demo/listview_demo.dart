@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_flutter/demo/post_show.dart';
 import 'package:hr_flutter/utils/FadeInImageWithoutAuth.dart';
 import 'package:hr_flutter/model/post.dart';
 
@@ -39,7 +40,10 @@ class ListViewDemo extends StatelessWidget {
                 splashColor: Colors.white.withOpacity(0.3),
                 highlightColor: Colors.white.withOpacity(0.1),
                 onTap: () {
-                  debugPrint('Tap');
+                  Navigator.of(context).push(
+                    //路由跳转到详情页,利用构造函数传值
+                    MaterialPageRoute(builder: (context) => PostShow(post: posts[index]))
+                  );
                 },
               ),
             ),
