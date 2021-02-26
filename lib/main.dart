@@ -9,6 +9,7 @@ import 'demo/layout_demo.dart';
 import 'demo/view_demo.dart';
 import 'demo/sliver_demo.dart';
 import 'demo/navigator_demo.dart';
+import 'demo/from_demo.dart';
 
 void main() => runApp(App());
 
@@ -17,16 +18,18 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: FormDemo(),
       routes: {
-        '/about': (BuildContext context) => Page(title: 'About')
+        '/about': (BuildContext context) => Page(title: 'About'),
+        '/form': (BuildContext context) => FormDemo(),
       },
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         //设置按下的颜色
         highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
         //设置水波纹的颜色
-        splashColor: Colors.white70
+        splashColor: Colors.white70,
+        accentColor: Color.fromRGBO(3, 54, 255, 1)
       )
     );
   }
