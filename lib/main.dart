@@ -10,6 +10,7 @@ import 'demo/view_demo.dart';
 import 'demo/sliver_demo.dart';
 import 'demo/navigator_demo.dart';
 import 'demo/from_demo.dart';
+import 'demo/material_components.dart';
 
 void main() => runApp(App());
 
@@ -18,10 +19,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FormDemo(),
+      home: MaterialComponents(),
       routes: {
         '/about': (BuildContext context) => Page(title: 'About'),
         '/form': (BuildContext context) => FormDemo(),
+        '/mdc': (BuildContext context) => MaterialComponents()
       },
       theme: ThemeData(
         primarySwatch: Colors.yellow,
