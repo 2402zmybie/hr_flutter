@@ -4,6 +4,10 @@ class FormDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('FormDemo'),
+        elevation: 0,
+      ),
       body: Theme(
         //只覆盖primaryColor这个主题, 其他的主题都会保留
         data: Theme.of(context).copyWith(
